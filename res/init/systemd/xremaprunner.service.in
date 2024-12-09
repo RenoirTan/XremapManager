@@ -2,7 +2,7 @@
 Description=Xremap Runner
 
 [Service]
-ExecStart=/usr/bin/xrmp-runner
+ExecStart=@bindir@/xrmp-runner
 Type=simple
 WorkingDirectory=/
 Restart=no

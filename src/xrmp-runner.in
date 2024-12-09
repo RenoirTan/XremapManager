@@ -1,14 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+datadir=@datadir@
 
 function err() {
     echo -e "\e[31mERR:\e[0m" $@
 }
 
-MGR_ROOT=$(dirname $0)
-
 XRMP_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/xremapmanager.json"
 if [ ! -f "$XRMP_CONFIG_FILE" ]; then
-    cp "$MGR_ROOT/xremapmanager.json" "$XRMP_CONFIG_FILE"
+    cp "$datadir/xremapmanager.json" "$XRMP_CONFIG_FILE"
 fi
 
 XREMAP=$(jq -r .command.path $XRMP_CONFIG_FILE)
