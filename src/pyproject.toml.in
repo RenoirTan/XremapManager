@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "xremapmanager"
-version = "0.1.0"
+name = "@PROJECT_NAME@"
+version = "@PROJECT_VERSION@"
 description = "Manage Xremap"
 authors = []
 

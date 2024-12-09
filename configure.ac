@@ -6,5 +6,5 @@ AC_SUBST([PROJECT_NAME])
 AC_SUBST([PROJECT_VERSION])
 AM_CONDITIONAL([USE_SYSTEMD], [test x$INIT_SYSTEM = xsystemd])
 AM_CONDITIONAL([USE_OPENRC], [test x$INIT_SYSTEM = xopenrc])
-AC_CONFIG_FILES([Makefile src/Makefile res/Makefile src/xremapmanager/_data.py])
+AC_CONFIG_FILES([Makefile src/Makefile res/Makefile src/pyproject.toml src/xremapmanager/_data.py])
 AC_OUTPUT
