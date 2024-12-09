@@ -4,6 +4,9 @@ version = "@PROJECT_VERSION@"
 description = "Manage Xremap"
 authors = []
 
+[tool.poetry.scripts]
+xrmp-runner = "xremapmanager.runner:main"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 
