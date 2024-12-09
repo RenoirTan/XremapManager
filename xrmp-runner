@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+function err() {
+    echo -e "\e[31mERR:\e[0m" $@
+}
+
+XRMP_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/xremapmanager.json"
+if [ ! -f "$XRMP_CONFIG_FILE" ]; then
+    touch "$XRMP_CONFIG_FILE"
+fi
+
+XREMAP=$(jq -r .xremap.command $XRMP_CONFIG_FILE)
+XREMAP="${XREMAP:-xremap}"
+if ! 2>/dev/null 1>&2 which $XREMAP; then
+    err "Could not find ${XREMAP}"
+    exit 1
+fi
+
+REMAP_CONFIG=$(jq -r .config.lastLayout $XRMP_CONFIG_FILE)
+
+$XREMAP "$REMAP_CONFIG"
