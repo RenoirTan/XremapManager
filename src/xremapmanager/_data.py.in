@@ -1,1 +1,4 @@
 VERSION = "@PROJECT_VERSION@"
+PREFIX_DIR = "@prefix@"
+BIN_DIR = "@bindir@"
+DATA_DIR = "@datadir@"
