@@ -1,4 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
 
 function err() {
     echo -e "\e[31mERR:\e[0m" $@
