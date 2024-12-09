@@ -6,9 +6,12 @@ authors = []
 
 [tool.poetry.scripts]
 xrmp-runner = "xremapmanager.runner:main"
+xrmp-manage = "xremapmanager.manage:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+flask = "^3.1.0"
+waitress = "^3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 installer = "^0.7.0"
