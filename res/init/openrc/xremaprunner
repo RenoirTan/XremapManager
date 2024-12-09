@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+
+name="xremaprunner"
+description="Xremap Runner"
+command=/usr/bin/xrmp-runner
+command_background=true
