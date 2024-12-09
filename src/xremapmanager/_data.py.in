@@ -1,0 +1,11 @@
+import os
+from pathlib import Path
+
+VERSION = "@PROJECT_VERSION@"
+PREFIX_DIR = Path("@prefix@")
+BIN_DIR = Path("@bindir@")
+DATA_DIR = Path("@datadir@")
+CONFIG_DIR = Path(os.environ.get("XDG_CONFIG_HOME") or (Path.home() / ".config"))
+
+DEFAULT_CONFIG_FP = DATA_DIR / "xremapmanager.json"
+CONFIG_FP = CONFIG_DIR / "xremapmanager.json"
