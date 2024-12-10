@@ -33,6 +33,8 @@ Window {
 
             Label {
                 text: "Xremap Command"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -42,6 +44,8 @@ Window {
 
             Label {
                 text: "Xremap Pre-Launch Command"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -51,6 +55,8 @@ Window {
 
             Label {
                 text: "Xremap Post-Launch Command"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -60,6 +66,8 @@ Window {
 
             Label {
                 text: "Layout"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             TextField {
@@ -69,6 +77,8 @@ Window {
 
             Label {
                 text: "Match Mice"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             CheckBox {
@@ -78,6 +88,8 @@ Window {
 
             Label {
                 text: "Watch Devices"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             CheckBox {
@@ -87,6 +99,8 @@ Window {
 
             Label {
                 text: "Watch Config"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
             }
 
             CheckBox {
