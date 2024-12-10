@@ -56,6 +56,7 @@ Window {
             TextField {
                 text: xrmpcfgCommandPrerun
                 onEditingFinished: xrmpcfgCommandPrerun = text
+                Layout.fillWidth: true
             }
 
             Label {
@@ -67,6 +68,7 @@ Window {
             TextField {
                 text: xrmpcfgCommandPostrun
                 onEditingFinished: xrmpcfgCommandPostrun = text
+                Layout.fillWidth: true
             }
 
             Label {
@@ -78,6 +80,7 @@ Window {
             TextField {
                 text: xrmpcfgLayout
                 onEditingFinished: xrmpcfgLayout = text
+                Layout.fillWidth: true
             }
 
             Label {
