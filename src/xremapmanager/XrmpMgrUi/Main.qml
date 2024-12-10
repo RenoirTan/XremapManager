@@ -84,6 +84,26 @@ Window {
             }
 
             Label {
+                text: "Include Devices"
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
+            }
+
+            ScrollView {
+                Layout.fillWidth: true
+                Layout.maximumHeight: 300
+
+                ListView {
+                    anchors.fill: parent
+                    model: xrmpcfgDevicesInclude
+
+                    delegate: TextField {
+                        text: modelData
+                    }
+                }
+            }
+
+            Label {
                 text: "Match Mice"
                 horizontalAlignment: Text.AlignRight
                 Layout.alignment: Qt.AlignRight
