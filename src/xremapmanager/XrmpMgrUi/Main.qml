@@ -12,6 +12,12 @@ Window {
     property string xrmpcfgCommandPath
     property string xrmpcfgCommandPrerun
     property string xrmpcfgCommandPostrun
+    property string xrmpcfgLayout
+    property list<string> xrmpcfgDevicesInclude
+    property list<string> xrmpcfgDevicesIgnore
+    property bool xrmpcfgMatchMice
+    property bool xrmpcfgWatchDevice
+    property bool xrmpcfgWatchConfig
 
     Connections {
         target: backend
@@ -19,7 +25,7 @@ Window {
 
     Column {
         Row {
-            spacing: 2
+            spacing: 1
 
             Label {
                 text: "Xremap Command"
@@ -32,7 +38,7 @@ Window {
         }
 
         Row {
-            spacing: 2
+            spacing: 1
 
             Label {
                 text: "Xremap Pre-Launch Command"
@@ -45,7 +51,7 @@ Window {
         }
 
         Row {
-            spacing: 2
+            spacing: 1
 
             Label {
                 text: "Xremap Post-Launch Command"
@@ -54,6 +60,58 @@ Window {
             TextField {
                 text: xrmpcfgCommandPostrun
                 onEditingFinished: xrmpcfgCommandPostrun = text
+            }
+        }
+
+        Row {
+            spacing: 1
+
+            Label {
+                text: "Layout"
+            }
+
+            TextField {
+                text: xrmpcfgLayout
+                onEditingFinished: xrmpcfgLayout = text
+            }
+        }
+
+        Row {
+            spacing: 1
+
+            Label {
+                text: "Match Mice"
+            }
+
+            CheckBox {
+                checked: xrmpcfgMatchMice
+                onClicked: xrmpcfgMatchMice = checked
+            }
+        }
+
+        Row {
+            spacing: 1
+
+            Label {
+                text: "Watch Devices"
+            }
+
+            CheckBox {
+                checked: xrmpcfgWatchDevice
+                onClicked: xrmpcfgWatchDevice = checked
+            }
+        }
+
+        Row {
+            spacing: 1
+
+            Label {
+                text: "Watch Config"
+            }
+
+            CheckBox {
+                checked: xrmpcfgWatchConfig
+                onClicked: xrmpcfgWatchConfig = checked
             }
         }
 
@@ -67,7 +125,13 @@ Window {
         backend.submit({
             xrmpcfgCommandPath,
             xrmpcfgCommandPrerun,
-            xrmpcfgCommandPostrun
+            xrmpcfgCommandPostrun,
+            xrmpcfgLayout,
+            xrmpcfgDevicesInclude,
+            xrmpcfgDevicesIgnore,
+            xrmpcfgMatchMice,
+            xrmpcfgWatchDevice,
+            xrmpcfgWatchConfig
         });
     }
 }
