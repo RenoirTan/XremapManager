@@ -24,8 +24,8 @@ Window {
     }
 
     Column {
-        Row {
-            spacing: 1
+        GridLayout {
+            columns: 2
 
             Label {
                 text: "Xremap Command"
@@ -35,10 +35,6 @@ Window {
                 text: xrmpcfgCommandPath
                 onEditingFinished: xrmpcfgCommandPath = text
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Xremap Pre-Launch Command"
@@ -48,10 +44,6 @@ Window {
                 text: xrmpcfgCommandPrerun
                 onEditingFinished: xrmpcfgCommandPrerun = text
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Xremap Post-Launch Command"
@@ -61,10 +53,6 @@ Window {
                 text: xrmpcfgCommandPostrun
                 onEditingFinished: xrmpcfgCommandPostrun = text
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Layout"
@@ -74,10 +62,6 @@ Window {
                 text: xrmpcfgLayout
                 onEditingFinished: xrmpcfgLayout = text
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Match Mice"
@@ -87,10 +71,6 @@ Window {
                 checked: xrmpcfgMatchMice
                 onClicked: xrmpcfgMatchMice = checked
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Watch Devices"
@@ -100,10 +80,6 @@ Window {
                 checked: xrmpcfgWatchDevice
                 onClicked: xrmpcfgWatchDevice = checked
             }
-        }
-
-        Row {
-            spacing: 1
 
             Label {
                 text: "Watch Config"
