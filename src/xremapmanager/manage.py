@@ -17,6 +17,8 @@ class Backend(QObject):
         self._config = config
         self._root.setProperty("backend", self)
         self._root.setProperty("xrmpcfgCommandPath", self._config.command.path)
+        self._root.setProperty("xrmpcfgCommandPrerun", self._config.command.prerun)
+        self._root.setProperty("xrmpcfgCommandPostrun", self._config.command.postrun)
     
     @Slot(dict)
     def submit(self, cfg):

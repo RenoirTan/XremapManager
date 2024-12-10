@@ -3,13 +3,15 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Window {
-    width: 300
-    height: 200
+    // width: 300
+    // height: 200
     visible: true
     title: "Xremap Manager"
 
     property QtObject backend
     property string xrmpcfgCommandPath
+    property string xrmpcfgCommandPrerun
+    property string xrmpcfgCommandPostrun
 
     Connections {
         target: backend
@@ -29,6 +31,32 @@ Window {
             }
         }
 
+        Row {
+            spacing: 2
+
+            Label {
+                text: "Xremap Pre-Launch Command"
+            }
+
+            TextField {
+                text: xrmpcfgCommandPrerun
+                onEditingFinished: xrmpcfgCommandPrerun = text
+            }
+        }
+
+        Row {
+            spacing: 2
+
+            Label {
+                text: "Xremap Post-Launch Command"
+            }
+
+            TextField {
+                text: xrmpcfgCommandPostrun
+                onEditingFinished: xrmpcfgCommandPostrun = text
+            }
+        }
+
         Button {
             text: "Apply"
             onClicked: submit()
@@ -36,6 +64,10 @@ Window {
     }
 
     function submit() {
-        backend.submit({xrmpcfgCommandPath});
+        backend.submit({
+            xrmpcfgCommandPath,
+            xrmpcfgCommandPrerun,
+            xrmpcfgCommandPostrun
+        });
     }
 }
