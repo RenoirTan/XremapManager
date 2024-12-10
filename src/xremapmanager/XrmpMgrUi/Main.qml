@@ -9,6 +9,7 @@ Window {
     title: "Xremap Manager"
 
     property QtObject backend
+    property string xrmpcfgCommandPath
 
     Connections {
         target: backend
@@ -23,13 +24,18 @@ Window {
             }
 
             TextField {
-                text: "xremap"
+                text: xrmpcfgCommandPath
+                onEditingFinished: xrmpcfgCommandPath = text
             }
         }
 
         Button {
             text: "Apply"
-            onClicked: backend.submit()
+            onClicked: submit()
         }
+    }
+
+    function submit() {
+        backend.submit({xrmpcfgCommandPath});
     }
 }

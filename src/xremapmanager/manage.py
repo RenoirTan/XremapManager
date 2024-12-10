@@ -6,14 +6,17 @@ from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtQuickControls2 import QQuickStyle
 
+from xremapmanager._data import CONFIG_FP
+from xremapmanager.config import XMgrConfig
+
 
 class Backend(QObject):
     def __init__(self):
         super().__init__()
     
-    @Slot()
-    def submit(self):
-        print("Submitted")
+    @Slot(dict)
+    def submit(self, cfg):
+        print(f"{cfg=}")
 
 
 def main():
@@ -27,6 +30,8 @@ def main():
         sys.exit(-1)
     root = engine.rootObjects()[0]
     root.setProperty("backend", backend)
+    cfg = XMgrConfig.json_loadfp(CONFIG_FP)
+    root.setProperty("xrmpcfgCommandPath", cfg.command.path)
     exit_code = app.exec()
     del engine
     return exit_code
