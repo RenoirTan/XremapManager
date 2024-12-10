@@ -25,8 +25,12 @@ Window {
 
     Column {
         padding: 10
+        anchors.fill: parent
 
         GridLayout {
+            // Horrible way to set padding
+            // Don't set y and height to avoid covering up the buttons at the bottom
+            x: 10; width: parent.width-x*2
             columns: 2
             rowSpacing: 10
             columnSpacing: 10
@@ -40,6 +44,7 @@ Window {
             TextField {
                 text: xrmpcfgCommandPath
                 onEditingFinished: xrmpcfgCommandPath = text
+                Layout.fillWidth: true
             }
 
             Label {
