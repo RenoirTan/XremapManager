@@ -24,8 +24,12 @@ Window {
     }
 
     Column {
+        padding: 10
+
         GridLayout {
             columns: 2
+            rowSpacing: 10
+            columnSpacing: 10
 
             Label {
                 text: "Xremap Command"
