@@ -96,26 +96,8 @@ Window {
                     Layout.alignment: Qt.AlignRight
                 }
 
-                ScrollView {
-                    Layout.fillWidth: true
-                    Layout.maximumHeight: 300
-                    id: includeDevicesScroller
-
-                    ListView {
-                        anchors.fill: parent
-                        model: xrmpcfgDevicesInclude
-
-                        delegate: Row {
-                            width: includeDevicesScroller.width
-                            topPadding: 5
-                            bottomPadding: 5
-
-                            TextField {
-                                text: modelData
-                                width: parent.width
-                            }
-                        }
-                    }
+                Devices {
+                    items: xrmpcfgDevicesInclude
                 }
 
                 Label {
