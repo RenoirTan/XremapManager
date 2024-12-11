@@ -105,10 +105,15 @@ Window {
                         anchors.fill: parent
                         model: xrmpcfgDevicesInclude
 
-                        delegate: TextField {
-                            text: modelData
-                            Layout.fillWidth: true
+                        delegate: Row {
                             width: includeDevicesScroller.width
+                            topPadding: 5
+                            bottomPadding: 5
+
+                            TextField {
+                                text: modelData
+                                width: parent.width
+                            }
                         }
                     }
                 }
