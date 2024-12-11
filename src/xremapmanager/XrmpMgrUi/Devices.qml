@@ -2,33 +2,45 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-ScrollView {
+ColumnLayout {
     Layout.fillWidth: true
-    Layout.maximumHeight: 300
-    id: devicesScroller
+    // height: devicesScroller.height
+    id: devicesBox
 
     property list<string> items: []
 
     signal editingFinished(list<string> newItems)
 
-    ListView {
-        anchors.fill: parent
-        model: items
-        id: devicesList
+    ScrollView {
+        Layout.fillWidth: true
+        Layout.maximumHeight: 300
+        id: devicesScroller
 
-        delegate: Row {
-            width: devicesScroller.width
-            topPadding: 5
-            bottomPadding: 5
+        ListView {
+            anchors.fill: parent
+            model: items
+            id: devicesList
 
-            property bool actuallyIsARow: true
-            
-            TextField {
-                text: modelData
-                width: parent.width
+            delegate: Row {
+                width: devicesScroller.width
+                topPadding: 5
+                bottomPadding: 5
 
-                onEditingFinished: sendAllItems()
+                property bool actuallyIsARow: true
+                
+                TextField {
+                    text: modelData
+                    width: parent.width
+
+                    onEditingFinished: sendAllItems()
+                }
             }
+        }
+    }
+
+    Row {
+        Button {
+            text: "Add more devices"
         }
     }
 
@@ -44,6 +56,6 @@ ScrollView {
     }
 
     function sendAllItems() {
-        devicesScroller.editingFinished(getAllItems());
+        devicesBox.editingFinished(getAllItems());
     }
 }
