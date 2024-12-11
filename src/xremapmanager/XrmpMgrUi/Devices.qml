@@ -41,6 +41,11 @@ ColumnLayout {
     Row {
         Button {
             text: "Add more devices"
+            onClicked: editingFinished((() => {
+                const newItems = getAllItems();
+                newItems.push("");
+                return newItems;
+            })());
         }
     }
 
