@@ -99,6 +99,7 @@ Window {
                 ScrollView {
                     Layout.fillWidth: true
                     Layout.maximumHeight: 300
+                    id: includeDevicesScroller
 
                     ListView {
                         anchors.fill: parent
@@ -106,6 +107,8 @@ Window {
 
                         delegate: TextField {
                             text: modelData
+                            Layout.fillWidth: true
+                            width: includeDevicesScroller.width
                         }
                     }
                 }
