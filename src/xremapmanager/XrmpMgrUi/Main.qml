@@ -7,6 +7,7 @@ Window {
     // height: 200
     visible: true
     title: "Xremap Manager"
+    id: root
 
     property QtObject backend
     property string xrmpcfgCommandPath
@@ -24,122 +25,134 @@ Window {
     }
 
     Column {
-        padding: 10
         anchors.fill: parent
+        width: parent.width
+        spacing: 10
 
-        GridLayout {
-            // Horrible way to set padding
-            // Don't set y and height to avoid covering up the buttons at the bottom
-            x: 10; width: parent.width-x*2
-            columns: 2
-            rowSpacing: 10
-            columnSpacing: 10
+        ScrollView {
+            height: parent.height - bottomRow.height - 10
+            width: root.width
+            padding: 10
 
-            Label {
-                text: "Xremap Command"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+            GridLayout {
+                // Horrible way to set padding
+                // Don't set y and height to avoid covering up the buttons at the bottom
+                x: 10; width: root.width-x*5 // 5 because 2 is not enough for some reason
+                columns: 2
+                rowSpacing: 10
+                columnSpacing: 10
 
-            TextField {
-                text: xrmpcfgCommandPath
-                onEditingFinished: xrmpcfgCommandPath = text
-                Layout.fillWidth: true
-            }
+                Label {
+                    text: "Xremap Command"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            Label {
-                text: "Xremap Pre-Launch Command"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                TextField {
+                    text: xrmpcfgCommandPath
+                    onEditingFinished: xrmpcfgCommandPath = text
+                    Layout.fillWidth: true
+                }
 
-            TextField {
-                text: xrmpcfgCommandPrerun
-                onEditingFinished: xrmpcfgCommandPrerun = text
-                Layout.fillWidth: true
-            }
+                Label {
+                    text: "Xremap Pre-Launch Command"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            Label {
-                text: "Xremap Post-Launch Command"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                TextField {
+                    text: xrmpcfgCommandPrerun
+                    onEditingFinished: xrmpcfgCommandPrerun = text
+                    Layout.fillWidth: true
+                }
 
-            TextField {
-                text: xrmpcfgCommandPostrun
-                onEditingFinished: xrmpcfgCommandPostrun = text
-                Layout.fillWidth: true
-            }
+                Label {
+                    text: "Xremap Post-Launch Command"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            Label {
-                text: "Layout"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                TextField {
+                    text: xrmpcfgCommandPostrun
+                    onEditingFinished: xrmpcfgCommandPostrun = text
+                    Layout.fillWidth: true
+                }
 
-            TextField {
-                text: xrmpcfgLayout
-                onEditingFinished: xrmpcfgLayout = text
-                Layout.fillWidth: true
-            }
+                Label {
+                    text: "Layout"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            Label {
-                text: "Include Devices"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                TextField {
+                    text: xrmpcfgLayout
+                    onEditingFinished: xrmpcfgLayout = text
+                    Layout.fillWidth: true
+                }
 
-            ScrollView {
-                Layout.fillWidth: true
-                Layout.maximumHeight: 300
+                Label {
+                    text: "Include Devices"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-                ListView {
-                    anchors.fill: parent
-                    model: xrmpcfgDevicesInclude
+                ScrollView {
+                    Layout.fillWidth: true
+                    Layout.maximumHeight: 300
 
-                    delegate: TextField {
-                        text: modelData
+                    ListView {
+                        anchors.fill: parent
+                        model: xrmpcfgDevicesInclude
+
+                        delegate: TextField {
+                            text: modelData
+                        }
                     }
                 }
-            }
 
-            Label {
-                text: "Match Mice"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                Label {
+                    text: "Match Mice"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            CheckBox {
-                checked: xrmpcfgMatchMice
-                onClicked: xrmpcfgMatchMice = checked
-            }
+                CheckBox {
+                    checked: xrmpcfgMatchMice
+                    onClicked: xrmpcfgMatchMice = checked
+                }
 
-            Label {
-                text: "Watch Devices"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                Label {
+                    text: "Watch Devices"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            CheckBox {
-                checked: xrmpcfgWatchDevice
-                onClicked: xrmpcfgWatchDevice = checked
-            }
+                CheckBox {
+                    checked: xrmpcfgWatchDevice
+                    onClicked: xrmpcfgWatchDevice = checked
+                }
 
-            Label {
-                text: "Watch Config"
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-            }
+                Label {
+                    text: "Watch Config"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
 
-            CheckBox {
-                checked: xrmpcfgWatchConfig
-                onClicked: xrmpcfgWatchConfig = checked
+                CheckBox {
+                    checked: xrmpcfgWatchConfig
+                    onClicked: xrmpcfgWatchConfig = checked
+                }
             }
         }
 
-        Button {
-            text: "Apply"
-            onClicked: submit()
+        Row {
+            padding: 10
+            id: bottomRow
+
+            Button {
+                text: "Apply"
+                onClicked: submit()
+            }
         }
     }
 
