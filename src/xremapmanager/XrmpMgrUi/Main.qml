@@ -98,6 +98,8 @@ Window {
 
                 Devices {
                     items: xrmpcfgDevicesInclude
+                    // might cause re-rendering, should probably check later
+                    onEditingFinished: (newItems) => xrmpcfgDevicesInclude = newItems
                 }
 
                 Label {
