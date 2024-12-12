@@ -36,10 +36,13 @@ ColumnLayout {
                     text: modelData
                     width: parent.width
 
-                    onEditingFinished: updateItem(deviceRow)
+                    onEditingFinished: {
+                        devicesList.selectedIndex = index; // when tabbed into
+                        updateItem(deviceRow);
+                    }
 
                     onPressed: (_mouseEvent) => {
-                        devicesList.selectedIndex = index
+                        devicesList.selectedIndex = index;
                     }
                 }
             }
@@ -71,6 +74,7 @@ ColumnLayout {
 
     function updateItem(item) {
         const index = item.indexOfDelegate;
+        console.log(index);
         items[index] = item.children[0].text;
         devicesBox.editingFinished(items);
     }
