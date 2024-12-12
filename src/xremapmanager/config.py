@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 import os
 from pathlib import Path
 import json
@@ -87,3 +87,16 @@ class XMgrConfig:
     def json_loadfp(cls, p: os.PathLike) -> "XMgrConfig":
         with Path(p).open("r") as f:
             return cls.json_load(f)
+    
+    def to_dict(self) -> dict:
+        return asdict(self)
+    
+    def json_dumps(self) -> str:
+        return json.dumps(self.to_dict())
+    
+    def json_dump(self, f: IO):
+        return json.dump(self.to_dict(), f)
+    
+    def json_dumpfp(self, p: os.PathLike):
+        with Path(p).open("w") as f:
+            return self.json_dump(f)
