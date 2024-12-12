@@ -55,6 +55,7 @@ ColumnLayout {
             onClicked: editingFinished((() => {
                 const newItems = getAllItems();
                 newItems.splice(devicesList.selectedIndex + 1, 0, "")
+                devicesList.selectedIndex++;
                 return newItems;
             })())
         }
@@ -65,6 +66,7 @@ ColumnLayout {
             onClicked: editingFinished((() => {
                 const newItems = getAllItems();
                 newItems.splice(devicesList.selectedIndex, 1);
+                devicesList.selectedIndex--;
                 return newItems;
             })())
         }
@@ -76,6 +78,7 @@ ColumnLayout {
                 const newItems = getAllItems();
                 const i = devicesList.selectedIndex;
                 [newItems[i], newItems[i-1]] = [newItems[i-1], newItems[i]];
+                devicesList.selectedIndex--;
                 return newItems;
             })())
         }
@@ -90,6 +93,7 @@ ColumnLayout {
                 const newItems = getAllItems();
                 const i = devicesList.selectedIndex;
                 [newItems[i], newItems[i+1]] = [newItems[i+1], newItems[i]];
+                devicesList.selectedIndex++;
                 return newItems;
             })())
         }
