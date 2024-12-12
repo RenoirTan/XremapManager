@@ -5,6 +5,7 @@ import QtQuick.Layouts
 Window {
     // width: 300
     // height: 200
+    minimumWidth: 600
     visible: true
     title: "Xremap Manager"
     id: root
