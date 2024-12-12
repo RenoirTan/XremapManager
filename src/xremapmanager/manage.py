@@ -51,7 +51,7 @@ def main():
     backend = Backend(root=root, config=XMgrConfig.json_loadfp(CONFIG_FP))
     exit_code = app.exec()
     del engine
-    print(backend._config)
+    backend._config.json_dumpfp(CONFIG_FP)
     return exit_code
 
 
