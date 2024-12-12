@@ -66,7 +66,7 @@ ColumnLayout {
             onClicked: editingFinished((() => {
                 const newItems = getAllItems();
                 newItems.splice(devicesList.selectedIndex, 1);
-                devicesList.selectedIndex--;
+                devicesList.selectedIndex = Math.max(0, devicesList.selectedIndex - 1);
                 return newItems;
             })())
         }
