@@ -56,11 +56,17 @@ ColumnLayout {
                 const newItems = getAllItems();
                 newItems.splice(devicesList.selectedIndex + 1, 0, "")
                 return newItems;
-            })());
+            })())
         }
 
         Button {
             text: "-"
+            enabled: devicesList.selectedIndex >= 0
+            onClicked: editingFinished((() => {
+                const newItems = getAllItems();
+                newItems.splice(devicesList.selectedIndex, 1);
+                return newItems;
+            })())
         }
 
         Button {
@@ -74,7 +80,6 @@ ColumnLayout {
 
     function updateItem(item) {
         const index = item.indexOfDelegate;
-        console.log(index);
         items[index] = item.children[0].text;
         devicesBox.editingFinished(items);
     }
