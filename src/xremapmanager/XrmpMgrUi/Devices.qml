@@ -71,10 +71,27 @@ ColumnLayout {
 
         Button {
             text: "↑"
+            enabled: devicesList.selectedIndex > 0 // cannot move item at 0 any further up
+            onClicked: editingFinished((() => {
+                const newItems = getAllItems();
+                const i = devicesList.selectedIndex;
+                [newItems[i], newItems[i-1]] = [newItems[i-1], newItems[i]];
+                return newItems;
+            })())
         }
 
         Button {
             text: "↓"
+            enabled: (
+                0 <= devicesList.selectedIndex &&
+                devicesList.selectedIndex < items.length - 1
+            )
+            onClicked: editingFinished((() => {
+                const newItems = getAllItems();
+                const i = devicesList.selectedIndex;
+                [newItems[i], newItems[i+1]] = [newItems[i+1], newItems[i]];
+                return newItems;
+            })())
         }
     }
 
