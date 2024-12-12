@@ -21,18 +21,26 @@ ColumnLayout {
             model: items
             id: devicesList
 
+            property int selectedIndex: -1;
+
             delegate: Row {
                 width: devicesScroller.width
                 topPadding: 5
                 bottomPadding: 5
+                id: deviceRow
 
                 property bool actuallyIsARow: true
+                property int indexOfDelegate: index
                 
                 TextField {
                     text: modelData
                     width: parent.width
 
-                    onEditingFinished: sendAllItems()
+                    onEditingFinished: updateItem(deviceRow)
+
+                    onPressed: (_mouseEvent) => {
+                        devicesList.selectedIndex = index
+                    }
                 }
             }
         }
@@ -40,13 +48,31 @@ ColumnLayout {
 
     Row {
         Button {
-            text: "Add more devices"
+            text: "+"
             onClicked: editingFinished((() => {
                 const newItems = getAllItems();
-                newItems.push("");
+                newItems.splice(devicesList.selectedIndex + 1, 0, "")
                 return newItems;
             })());
         }
+
+        Button {
+            text: "-"
+        }
+
+        Button {
+            text: "↑"
+        }
+
+        Button {
+            text: "↓"
+        }
+    }
+
+    function updateItem(item) {
+        const index = item.indexOfDelegate;
+        items[index] = item.children[0].text;
+        devicesBox.editingFinished(items);
     }
 
     function getAllItems() {
@@ -56,7 +82,6 @@ ColumnLayout {
             const textField = item.children[0];
             newItems.push(textField.text);
         });
-        console.log(newItems);
         return newItems;
     }
 
