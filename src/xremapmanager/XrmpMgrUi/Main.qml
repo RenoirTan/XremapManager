@@ -8,6 +8,7 @@ Window {
     minimumWidth: 600
     visible: true
     title: "Xremap Manager"
+    color: "black"
     id: root
 
     property QtObject backend

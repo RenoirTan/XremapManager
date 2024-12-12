@@ -41,7 +41,7 @@ class Backend(QObject):
 
 def main():
     app = QGuiApplication(sys.argv)
-    QQuickStyle.setStyle("Material")
+    QQuickStyle.setStyle("Fusion")
     engine = QQmlApplicationEngine()
     engine.addImportPath(sys.path[0] or Path(__file__).parent) # xremapmanager/
     engine.loadFromModule("XrmpMgrUi", "Main")
