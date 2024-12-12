@@ -103,6 +103,18 @@ Window {
                 }
 
                 Label {
+                    text: "Ignore Devices"
+                    horizontalAlignment: Text.AlignRight
+                    Layout.alignment: Qt.AlignRight
+                }
+
+                Devices {
+                    items: xrmpcfgDevicesIgnore
+                    // might cause re-rendering, should probably check later
+                    onEditingFinished: (newItems) => xrmpcfgDevicesIgnore = newItems
+                }
+
+                Label {
                     text: "Match Mice"
                     horizontalAlignment: Text.AlignRight
                     Layout.alignment: Qt.AlignRight
